@@ -1,5 +1,5 @@
-create database Hotel Hotel;
-use Hotel Hotel;
+create database Hotel_Hotel;
+use Hotel_Hotel;
 create table customers(c_id int, Full_name varchar(255), Address varchar(255), Phone_no int, Room_id int, Check_in varchar(255), Check_out varchar(255), no_of_people int);
 create table employee(emp_id int, Full_name varchar(255), Address varchar(255), Phone_no int, Working_hours int, Salary int, Department varchar(255));
 create table rooms(room_type varchar(255),room_id int,description varchar(255));
