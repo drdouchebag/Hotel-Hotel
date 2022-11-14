@@ -1,8 +1,7 @@
-create database Hotel_Hotel;
+CREATE DATABASE Hotel_Hotel;
 use Hotel_Hotel;
-create table customers(c_id int, Full_name varchar(255), Address varchar(255), Phone_no int, Room_id int, Check_in varchar(255), Check_out varchar(255), no_of_people int);
-create table employee(emp_id int, Full_name varchar(255), Address varchar(255), Phone_no int, Working_hours int, Salary int, Department varchar(255));
-create table rooms(room_type varchar(255),room_id int,description varchar(255));
-create table services(s_no int,s_name varchar(255),emp_id int);
-create table restaurant(emp_id int, hierarchy varchar(255),name varchar(255));
-
+CREATE TABLE customers(c_id INT, Full_name VARCHAR(255), Address VARCHAR(255), Phone_no INT, Room_id INT, Check_in VARCHAR(255), Check_out VARCHAR(255), no_of_people INT);
+CREATE TABLE employee(emp_id INT, Full_name varchar(255), Address VARCHAR(255), Phone_no INT, Working_hours INT, Salary INT, Department VARCHAR(255));
+CREATE TABLE rooms(room_type VARCHAR(255), room_id INT, description VARCHAR(255));
+CREATE TABLE services(s_no INT, s_name VARCHAR(255), emp_id INT);
+CREATE TABLE restaurant(emp_id INT, hierarchy VARCHAR(255), name VARCHAR(255));
