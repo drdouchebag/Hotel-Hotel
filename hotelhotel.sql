@@ -15,5 +15,3 @@ INSERT INTO services VALUES(002, 'Swimming Pool');
 INSERT INTO services VALUES(003, 'Spa & Jacuzzi');
 INSERT INTO services VALUES(004, 'Private Theatre');
 
-
-CREATE TABLE restaurant(emp_id INT, hierarchy VARCHAR(255), name VARCHAR(255));
