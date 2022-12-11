@@ -39,9 +39,9 @@ INSERT INTO rooms VALUES('P04', 'Floor 8' , 103 , 'VACANT');
 INSERT INTO rooms VALUES('H01', 'Floor 9' , 104 , 'VACANT');
 INSERT INTO rooms VALUES('H02', 'Floor 9' , 104 , 'VACANT');
 
-CREATE TABLE services(s_no INT, s_name VARCHAR(255));
-INSERT INTO services VALUES(001, 'Gaming Room');
-INSERT INTO services VALUES(002, 'Swimming Pool');
-INSERT INTO services VALUES(003, 'Spa & Jacuzzi');
-INSERT INTO services VALUES(004, 'Private Theatre');
+CREATE TABLE services(s_no INT, s_name VARCHAR(255), s_charge VARCHAR);
+INSERT INTO services VALUES(001, 'Gaming Room', '$20');
+INSERT INTO services VALUES(002, 'Swimming Pool', '$35');
+INSERT INTO services VALUES(003, 'Spa & Jacuzzi', '$50');
+INSERT INTO services VALUES(004, 'Private Theatre', '$100');
 
