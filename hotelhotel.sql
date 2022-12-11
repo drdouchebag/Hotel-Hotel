@@ -36,7 +36,7 @@ INSERT INTO rooms VALUES('P04', 'Floor 8' , 103 , 'VACANT');
 
 /* 2 honeymoon suite rooms */
 INSERT INTO rooms VALUES('H01', 'Floor 9' , 104 , 'VACANT');
-INSERT INTO rooms VALUES('H01', 'Floor 9' , 104 , 'VACANT');
+INSERT INTO rooms VALUES('H02', 'Floor 9' , 104 , 'VACANT');
 
 CREATE TABLE services(s_no INT, s_name VARCHAR(255));
 INSERT INTO services VALUES(001, 'Gaming Room');
