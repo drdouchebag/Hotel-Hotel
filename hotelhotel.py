@@ -20,3 +20,7 @@ e_name = input('Enter the employee full name: ')
 e_address = input('Enter the primary address: ')
 e_phnumber = input("Enter the employee's phone number: ")
 workinghours = input('Enter the number of hours he/she works: ')
+salary = input("Enter the salary he/she recieves: ")
+department= input("Enter the department he/she works in: ")
+
+cursor_obj.execute('INSERT INTO employee VALUES({}{}{}{}{}{}{}{}'.format(emp_id,e_name,e_address,e_phnumber,workinghours,salary,department))
