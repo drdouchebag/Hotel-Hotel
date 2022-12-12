@@ -2,29 +2,35 @@ import mysql.connector
 myconn = mysql.connector.connect(host = 'localhost', user = 'root', password = '1234', database = 'hotel_hotel')
 cursor_obj = connection_object.cursor()
 
-#enter new customer details
-c_id = input('Enter the customer ID: ')
-name = input('Enter the customer full name: ')
-address = input('Enter the primary address: ')
-phnumber = input("Enter the customer's phone number: ")
-room_no = input('Enter the room number of the allotted suite: ')
-check_in = input('Enter the check-in date (YYYY/MM/DD): ')
-check_out = input('Enter the check-out date (YYYY/MM/DD): ')
-peopleno = input('Enter the number of people: ')
 
-cursor_obj.execute('INSERT INTO customers VALUES({}{}{}{}{}{}{}{}'.format(c_id,name,address,phnumber,room_no,check_in,check_out,peopleno))
-cursor_obj.execute('UPDATE rooms SET Availability = "Occupied" WHERE room_no = {}'.format(room_no))
+#enter new customer details    
+def newcust():
+  c_id = input('Enter the customer ID: ')
+  name = input('Enter the customer full name: ')
+  address = input('Enter the primary address: ')
+  phnumber = input("Enter the customer's phone number: ")
+  room_no = input('Enter the room number of the allotted suite: ')
+  check_in = input('Enter the check-in date (YYYY/MM/DD): ')
+  check_out = input('Enter the check-out date (YYYY/MM/DD): ')
+  peopleno = input('Enter the number of people: ')
+  
+  cursor_obj.execute('INSERT INTO customers VALUES({}{}{}{}{}{}{}{}'.format(c_id,name,address,phnumber,room_no,check_in,check_out,peopleno))
+  cursor_obj.execute('UPDATE rooms SET Availability = "Occupied" WHERE room_no = {}'.format(room_no))
+  print('New details entered successfully')
+  
 
 #for table employee
-emp_id = input('Enter the employee ID: ')
-e_name = input('Enter the employee full name: ')
-e_address = input('Enter the primary address: ')
-e_phnumber = input("Enter the employee's phone number: ")
-working_hours = input('Enter the number of hours he/she works: ')
-salary = input('Enter the annual salary: ')
-dept = input('Enter the department of duty')
+def newemp():
+  emp_id = input('Enter the employee ID: ')
+  e_name = input('Enter the employee full name: ')
+  e_address = input('Enter the primary address: ')
+  e_phnumber = input("Enter the employee's phone number: ")
+  working_hours = input('Enter the number of hours he/she works: ')
+  salary = input('Enter the annual salary: ')
+  dept = input('Enter the department of duty')
 
-cursor_obj.execute('INSERT into employees VALUES{}{}{}{}{}{}{}'.format(emp_id,e_name,e_address,e_phnumber,working_hours,salary,dept))
+  cursor_obj.execute('INSERT into employees VALUES{}{}{}{}{}{}{}'.format(emp_id,e_name,e_address,e_phnumber,working_hours,salary,dept))
+  print('New details entered successfully')
 
 
 #display the types of suites in the hotel
@@ -112,6 +118,27 @@ def empnumber():
     print(k[0], k[1])
   
   
+  
+  
+  
+#menu driven execution of functions
+while True:
+  print(' 1. Enter new customer details \n',
+      '2. Enter new employee details \n',
+      '3. Show suite types \n',
+      '4. How many rooms are available \n',
+      '5. Generate a bill \n',
+      '6. Display employee details \n',
+      '7. How many employees in each department')
+  user_inp = int(input('Enter the option'))
+  if user_inp = 1:
+    newcust()
+  elif user_inp = 2:
+    newemp()
+  elif user_inp = 3:
+    suites()
+  elif user_inp = 4:
+    available()
   
 
 
