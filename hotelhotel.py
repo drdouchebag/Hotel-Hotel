@@ -1,6 +1,6 @@
 import mysql.connector
 myconn = mysql.connector.connect(host = 'localhost', user = 'root', password = '1234', database = 'hotel_hotel')
-cursor_obj = connection_object.cursor()
+cursor_obj = myconn.cursor()
 
 
 #enter new customer details    
@@ -38,63 +38,63 @@ def suites():
   cursor_obj.execute('SELECT * FROM roomtypes;')
   records = cursor_obj.fetchall()
   for row in records:
-    print('ID:', row[0])
-    print('Type', row[1])
-    print('Description', row[2])
-    print('Rent per night', row[3])
+    print('ID: ', row[0])
+    print('Type: ', row[1])
+    print('Description: ', row[2])
+    print('Rent per night: ', row[3])
     
 #display the count of available rooms in the hotel
 def available():
   cursor_obj.execute('SELECT count(*) FROM rooms WHERE Availability = "Vacant";')
   for i in cursor_obj:
-    print(i)
+    print('The number of available rooms: ', i[0])
     
  
-
-#count the number of nights
+#counts the number of nights
 def numberofnights():
-  custid = input('Enter the customer ID')
-  cursor_obj.execute('SELECT datediff(check_out, check_in) FROM customers WHERE c_id = {};', format(custid))
+  custid = int(input('Enter the customer ID: '))
+  cursor_obj.execute('SELECT datediff(check_out, check_in) FROM customers WHERE c_id = {}'. format(custid))
   days = cursor_obj.fetchall()
   for i in days:
-    x = int(i)
- return x
+    x = int(i[0])
+  return x
 
 
-
-
-#generate the final bill
+#generates the final bill
 def bill():
   total_cost = 0
-  custid = input('Enter the customer ID')
+  custid = int(input('Enter the customer ID: '))
   cursor_obj.execute(' SELECT rent FROM customers NATURAL JOIN rooms,roomtypes WHERE rooms.room_id = roomtypes.room_id AND c_id = {};'.format(custid))
   data1 = cursor_obj.fetchall()
   for row1 in data1:
     rentx = row1[0]
+    rentint = int(rentx[1:])
   no_nights = numberofnights()  #function call to get the number of nights
-  total_cost += rentx*no_nights #gives the total rent for x number of nights
-  
-  serv = input('DID THE CUSTOMER OPT ANY SERVICE(S)? (Y/N): ')
-  if serv = 'Y':
-    cursor_obj.execute('SELECT * FROM services')
-    records = cursor_obj.fetchall()
-    for row2 in records:
-    print('ID:', row2[0])
-    print('Service Name', row2[1])
-    print('Charges', row[2]) #print all the service details
+  total_cost_room = rentint*no_nights #gives the total rent for x number of nights
+  total_cost += total_cost_room
+
+  while True:
+      serv = input('DID THE CUSTOMER OPT ANY SERVICE(S)? (Y/N): ')
+      if serv == 'Y' or serv == 'y':
+          cursor_obj.execute('SELECT * FROM services')
+          records = cursor_obj.fetchall()
+          for row2 in records:
+              print('Service ID:', row2[0])
+              print('Service Name:', row2[1])
+              print('Charges: ', row2[2]) #print all the service details
+          service1 = input('ENTER THE NAME OF THE SERVICE: ')
+          cursor_obj.execute('SELECT s_charge FROM services WHERE s_name = "{}"'.format(service1))
+          charge = cursor_obj.fetchall()
+          for y in charge:
+              servicecost = y[0]
+              servicecostint = int(servicecost[1:])
+          total_cost += servicecostint
+          print('Bill for your opted service(s):', servicecostint)
     
-    
-    service1 = input('ENTER THE NAME OF THE SERVICE: ')
-    cursor_obj.execute('SELECT s_charge FROM services WHERE s_name = "{}"'.format(service1))
-    charge = cursor_obj.fetchall()
-    for y in charge:
-      servicecost = y[0]
-    total_cost += servicecost
-    print(total_cost) #prints cost including rent and service charges
-    
-  else:
-    print(total_cost) #prints only the rent
-    
+      else:
+          print('Your Total Bill is: ',total_cost, 'including VAT \n',
+                'Room bill:', total_cost_room)
+                
     
 #display the employee details
 def empdetails():
@@ -129,7 +129,10 @@ while True:
       '4. How many rooms are available \n',
       '5. Generate a bill \n',
       '6. Display employee details \n',
-      '7. How many employees in each department')
+      '7. How many employees in each department \n',
+      '8. Display Customer details \n',
+      '9. Display all bookings made in the month \n',
+      '10. Display vacant rooms' )
   user_inp = int(input('Enter the option'))
   if user_inp = 1:
     newcust()
@@ -139,6 +142,13 @@ while True:
     suites()
   elif user_inp = 4:
     available()
+  elif user_inp = 5:
+    bill()
+  elif user_inp = 6:
+    empdetails()
+  elif user_inp = 7:
+    empnumber()
+  
   
 
 
