@@ -1,7 +1,7 @@
 import mysql.connector 
 import pandas
 
-connection = mysql.connector.connect(host = 'localhost', user = 'root', password = '1234', database = 'hotel_hotel')
+connection = mysql.connector.connect(host = 'localhost', user = 'root', password = 'abcd1234', database = 'hotel_hotel')
 cursor_obj = connection.cursor()
 
 
