@@ -52,19 +52,16 @@ def check_in():
 #enter new employee details
 def newemp():
   emp_id = int(input('Enter the employee ID: '))
-  e_name = input('Enter the employee full name: ')
-  e_address = input('Enter the primary address: ')
+  e_name = input('Enter the employee full name: ').upper()
+  e_address = input('Enter the primary address: ').upper()
   e_phnumber = input("Enter the employee's phone number: ")
   working_hours = int(input('Enter the number of hours he/she works: '))
   salary = int(input('Enter the annual salary: '))
-  dept = input('Enter the department of duty: ')
+  dept = input('Enter the department of duty: ').upper()
+  position = input('Enter the position:').upper()
   
-  st1="'"+e_name.upper()+"'"
-  st2="'"+e_address.upper()+"'"
-  st3="'"+e_phnumber+"'"
-  st4="'"+dept.upper()+"'"
 
-  cursor_obj.execute('INSERT into employee VALUES({},{},{},{},{},{},{})'.format(emp_id, st1, st2, st3, working_hours, salary, st4))
+  cursor_obj.execute('INSERT into employee VALUES({},"{}","{}","{}",{},{},"{}","{}")'.format(emp_id, e_name, e_address, e_phnumber, working_hours, salary, dept, position))
   connection.commit()
   print('New employee details entered successfully')
 
@@ -169,6 +166,7 @@ def empdetails():
     print('Working hours:', k[4])
     print('Annual Salary:', k[5])
     print('Department:', k[6])
+    print('Position:', k[7])
     
     
   
