@@ -274,6 +274,6 @@ while True:
     bookings()
   
   
-  
+connection.close()  
 
 
