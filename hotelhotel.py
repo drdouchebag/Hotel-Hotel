@@ -28,11 +28,12 @@ def check_in():
   cursor_obj.execute('UPDATE rooms SET Availability = "OCCUPIED" WHERE room_no = {}'.format(st4))
   connection.commit()
   print('New customer details entered successfully')
+  print('                                         ')
   
   
   
- #check out a customer
- def check_out():
+#check out a customer
+def check_out():
   enter_id = int(input('Enter the customer ID: '))
   #search for the room number the customer was staying in
   cursor_obj.execute('SELECT room_no FROM rooms NATURAL JOIN customers WHERE c_id = {}'.format(enter_id))
@@ -47,6 +48,7 @@ def check_in():
   cursor_obj.execute('UPDATE rooms SET Availability = "VACANT" WHERE room_no = "{}"'.format(room_num))
   connection.commit()
   print('Check-out successful!')
+  print('                                         ')
   
 
 #enter new employee details
@@ -64,6 +66,7 @@ def newemp():
   cursor_obj.execute('INSERT into employee VALUES({},"{}","{}","{}",{},{},"{}","{}")'.format(emp_id, e_name, e_address, e_phnumber, working_hours, salary, dept, position))
   connection.commit()
   print('New employee details entered successfully')
+  print('                                         ')
 
   
 
@@ -71,11 +74,13 @@ def newemp():
 def suites():
   cursor_obj.execute('SELECT * FROM roomtypes;')
   records = cursor_obj.fetchall()
+  print('The Suite Types')
   for row in records:
     print('ID: ', row[0])
     print('Type: ', row[1])
     print('Description: ', row[2])
     print('Rent per night: ', row[3])
+    print('                                         ')
     
     
     
@@ -93,13 +98,14 @@ def available():
       floor = row[1]
       avail = row[3]
       data.append([room_no, floor, avail])
-
-headers1 = [' 1 |',' 2 |',' 3 |',' 4 |',' 5 |',' 6 |',' 7 |',' 8 |',' 9 |','10 |','11 |','12 |','13 |','14 |','15 |','16 |','17 |','18 |']
-headers=["Room no.", "Floor", "Status"]
-df = pandas.DataFrame(data,headers1,headers)
-print(df)
-print('                                         ')
-
+      
+  headers1 = []
+  for i in range(len(roomdata)):
+      headers1.append('→')
+  headers=["Room no.", "Floor", "Status"]
+  df = pandas.DataFrame(data,headers1,headers)
+  print(df)
+  print('                                         ')
     
   
   
@@ -150,6 +156,7 @@ def bill():
           break
   print('Your Total Bill is: ',total_cost, 'including VAT \n',
         'Room bill:', total_cost_room)
+  print('                                         ')
     
     
     
@@ -158,6 +165,7 @@ def bill():
 def empdetails():
   cursor_obj.execute('SELECT * FROM employee;')
   details = cursor_obj.fetchall()
+  print ('Employee Details')
   for k in details:
     print('Employee ID:', k[0])
     print('Full Name:', k[1])
@@ -167,6 +175,7 @@ def empdetails():
     print('Annual Salary:', k[5])
     print('Department:', k[6])
     print('Position:', k[7])
+    print('                                         ')
     
     
   
@@ -177,7 +186,8 @@ def empnumber():
   cursor_obj.execute('SELECT Department, Count(*) FROM employees GROUP BY Department;')
   details = cursor_obj.fetchall()
   for k in details:
-    print(k[0], k[1])
+    print(k[0],':', k[1])
+    print('                                         ')
   
   
   
@@ -201,7 +211,7 @@ def bookings():
   
  
   
- cusdata=[]
+cusdata=[]
 def custdetails():
     cursor_obj.execute('SELECT * FROM customers')
     details = cursor_obj.fetchall()
@@ -241,25 +251,27 @@ while True:
       '10. Bookings for the month \n',
        )
   user_inp = int(input('Enter the option'))
+  print('                                         ')
+  
   if user_inp == 1:
     check_in()
     
   elif user_inp == 2:
     check_out()
     
-  elif user_inp = 3:
+  elif user_inp == 3:
     bill()
     
-  elif user_inp = 4:
+  elif user_inp == 4:
     suites()
     
-  elif user_inp = 5:
+  elif user_inp == 5:
     available()
     
-  elif user_inp = 6:
+  elif user_inp == 6:
     empdetails()
     
-  elif user_inp = 7:
+  elif user_inp == 7:
     newemp()
     
   elif user_inp == 8:
