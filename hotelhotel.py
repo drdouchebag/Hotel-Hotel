@@ -239,6 +239,10 @@ def custdetails():
   
 #menu driven execution of functions
 while True:
+  print('')
+  print("█░█ █▀█ ▀█▀ █▀▀ █░░ █░█ █▀█ ▀█▀ █▀▀ █░░")
+  print("█▀█ █▄█ ░█░ ██▄ █▄▄ █▀█ █▄█ ░█░ ██▄ █▄▄")
+  print('')
   print(' 1. Check In \n',
       '2. Check Out \n',
       '3. Generate total bill \n',
